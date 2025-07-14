@@ -50,7 +50,7 @@ export default function EventForm({
             durationInMinutes: event?.durationInMinutes ?? 30,
             },
 
-    })
+    });
 
     // Handle form submission
     async function onSubmit(values: z.infer<typeof eventFormSchema>) {
