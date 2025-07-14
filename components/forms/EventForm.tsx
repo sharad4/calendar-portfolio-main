@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation"
 
   // Marks this as a Client Component in Next.js
 
-type EventFormValues = z.infer<typeof eventFormSchema>;
+
 // Component to handle creating/editing/deleting an event
 export default function EventForm({
     event, // Destructure the `event` object from the props
@@ -41,30 +41,16 @@ export default function EventForm({
     const router = useRouter()
 
 
-    const form = useForm<EventFormValues>({
-        // resolver: zodResolver(eventFormSchema), // Validate with Zod schema
-        // defaultValues: event
-        // ? {
-        //     // If `event` is provided (edit mode), spread its existing properties as default values
-        //     ...event,
-        //   }
-        //   : {
-        //     // If `event` is not provided (create mode), use these fallback defaults
-        //     isActive: true,             // New events are active by default
-        //     durationInMinutes: 30,      // Default duration is 30 minutes
-        //     description: '',            // Ensure controlled input: default to empty string
-        //     name: '',                   // Ensure controlled input: default to empty string
-        //   },
-
-        resolver: zodResolver(eventFormSchema),
+    const form = useForm<z.infer<typeof eventFormSchema>>({
+        resolver: zodResolver(eventFormSchema), // Validate with Zod schema
             defaultValues: {
             name: event?.name ?? "",
             description: event?.description ?? "",
             isActive: event?.isActive ?? true,
-            durationInMinutes: event?.durationInMinutes ?? 60, // Default 1 hour if not provided
+            durationInMinutes: event?.durationInMinutes ?? 30,
             },
-        });
 
+    })
 
     // Handle form submission
     async function onSubmit(values: z.infer<typeof eventFormSchema>) {
