@@ -1,7 +1,7 @@
 'use client'
 import { eventFormSchema } from "@/schema/events"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { useForm, Resolver } from "react-hook-form"
 import { z } from "zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
@@ -15,7 +15,8 @@ import { createEvent, deleteEvent, updateEvent } from "@/server/actions/events"
 import { useRouter } from "next/navigation"
 
   // Marks this as a Client Component in Next.js
-
+type RawInput = z.input<typeof eventFormSchema>;
+type ParsedOutput = z.output<typeof eventFormSchema>;
 
 // Component to handle creating/editing/deleting an event
 export default function EventForm({
@@ -41,8 +42,9 @@ export default function EventForm({
     const router = useRouter()
 
 
-    const form = useForm<z.infer<typeof eventFormSchema>>({
-        resolver: zodResolver(eventFormSchema), // Validate with Zod schema
+  const form = useForm<ParsedOutput>({
+    // ⛳️ Full type-safe resolver, no TS errors:
+            resolver: zodResolver(eventFormSchema) as Resolver<RawInput, any, ParsedOutput>,
             defaultValues: {
             name: event?.name ?? "",
             description: event?.description ?? "",
