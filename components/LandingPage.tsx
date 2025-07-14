@@ -33,7 +33,7 @@ export default function LandingPage() {
             alt="Logo"
             />
         </section> 
-            {/* Clerk Sign-In Component with custom theme */}
+        {/* Clerk Sign-In Component with custom theme */}
         <div className="mt-3">
             <SignIn
             routing="hash" // Keeps sign-in UI on the same page using hash-based routing
