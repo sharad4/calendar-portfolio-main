@@ -168,7 +168,14 @@ export async function getValidTimesFromSchedule(
     })
   )
 
+
+
   })
+
+
+
+
+
 
 }
 

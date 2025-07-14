@@ -110,6 +110,8 @@ type PublicProfileProps = {
                 ))}
                 </div>
             )}
+
+
         </div>
     )
     

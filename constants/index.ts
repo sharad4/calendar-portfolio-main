@@ -8,6 +8,7 @@ export const DAYS_OF_WEEK_IN_ORDER = [
     "sunday",
   ] as const
 
+
   export const PrivateNavLinks = [
     {
       imgURL: '/assets/events.svg',

@@ -5,6 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+
 // Converts a time string like "09:15" into a decimal number like 9.25
 // This is mainly for display purposes (not for precise time calculations)
 export function timeToFloat(time: string): number {

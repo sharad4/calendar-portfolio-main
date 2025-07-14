@@ -35,8 +35,8 @@ export async function createEvent(
       throw new Error(`Failed to create event: ${error.message || error}`)
     } finally {
       
-    //    // Revalidate the '/events' path to ensure the page fetches fresh data after the database operation
-    //    revalidatePath('/events')
+       // Revalidate the '/events' path to ensure the page fetches fresh data after the database operation
+       revalidatePath('/events')
 
     }
   }
@@ -75,10 +75,8 @@ export async function updateEvent(
     } finally {
       // Revalidate the '/events' path to ensure the page fetches fresh data after the database operation
       revalidatePath('/events')
-
-    //   // Redirect the user to the '/events' page after the action completes (whether successfull or not)
-    //   redirect('/events')
     }
+
 
   } 
   
@@ -112,9 +110,6 @@ export async function updateEvent(
       } finally {
         // Revalidate the '/events' path to ensure the page fetches fresh data after the database operation
         revalidatePath('/events')
-
-        // // Redirect the user to the '/events' page after the action completes (whether succesfull or not)
-        // redirect('/events')
       }
     }
 

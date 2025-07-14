@@ -1,11 +1,14 @@
 'use client'
-import { SignIn } from '@clerk/nextjs'
-import { neobrutalism } from '@clerk/themes'
-import Image from 'next/image'
+import { SignIn } from "@clerk/nextjs"
+import { neobrutalism } from "@clerk/themes"
+import Image from "next/image"
+
+ // Marks this file as a Client Component
 
 export default function LandingPage() {
-  return (
-    <main className="flex items-center p-10 gap-24 animate-fade-in max-md:flex-col">
+    return (
+        <main className="flex items-center p-10 gap-24 animate-fade-in max-md:flex-col">
+        {/* Section with branding, heading, subheading, and illustration */}
         <section className="flex flex-col items-center">
             {/* App Logo */}
             <Image
@@ -32,8 +35,9 @@ export default function LandingPage() {
             height={500}
             alt="Logo"
             />
-        </section> 
-        {/* Clerk Sign-In Component with custom theme */}
+        </section>
+
+         {/* Clerk Sign-In Component with custom theme */}
         <div className="mt-3">
             <SignIn
             routing="hash" // Keeps sign-in UI on the same page using hash-based routing
@@ -41,7 +45,9 @@ export default function LandingPage() {
                 baseTheme: neobrutalism, // Applies the neobrutalism theme style to the sign-in UI
             }}
             />
-        </div> 
-    </main>
-  )
+        </div>
+
+        </main>
+
+    )
 }
